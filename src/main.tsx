@@ -6,6 +6,7 @@ import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistor, store } from "./redux/store";
+import { Toaster } from "sonner";
 
 // Ensure that the element exists before trying to render into it
 const rootElement = document.getElementById("root");
@@ -20,7 +21,7 @@ createRoot(rootElement).render(
     <PersistGate loading={null} persistor={persistor}> 
     <RouterProvider router={router} />
     </PersistGate>
-   
+    <Toaster richColors   />
     </Provider>
   </React.StrictMode>
 );

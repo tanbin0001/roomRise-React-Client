@@ -10,6 +10,8 @@ import {
 import Main from "../layouts/Main";
 import Home from "../pages/Home";
 import RoomDetails from "../components/Home/Rooms/RoomDetails";
+import Login from "../pages/Login";
+import Register from "../pages/Register";
 
  
 
@@ -31,5 +33,13 @@ export const router = createBrowserRouter([
 
         ]
 
+    },
+    {
+        path:'/login',
+        element:<Login/>
+    },
+    {
+        path:'/register',
+        element:<Register/>
     }
 ]);
