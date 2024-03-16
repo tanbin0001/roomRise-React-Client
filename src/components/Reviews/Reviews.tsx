@@ -1,8 +1,8 @@
 import {   useState } from "react";
 import { useGetAllReviewsQuery } from "../../redux/api/Reviews/review.api";
 import moment from "moment";
-import customCursorImage from '../../assets/cursor.png'; // Import your cursor image
-
+import customCursorImage from '../../assets/cursor.png';  
+import blankUser from '../../../public/blank user.png'
 const Review = ({ room }: any) => {
   const roomId = room?._id;
  
@@ -11,8 +11,7 @@ const Review = ({ room }: any) => {
   const reviewForThisHouse = allReviews?.filter(
     (review :any) => review.roomId._id === roomId
   );
-
-  console.log(reviewForThisHouse);
+ 
   const formatDate = (dateString:string) => {
     return moment(dateString).format('MMMM YYYY');
   };
@@ -120,12 +119,14 @@ const Review = ({ room }: any) => {
                   {review?.review}
                 </p>
                 <a className="inline-flex items-center">
-                  <img
+                <img
                     className="w-12 h-12 rounded-full flex-shrink-0 object-cover object-center"
-                    src={review.createdBy?.imageLink}
+                    src={room && room.sellerId && room.sellerId.imageLink ? room.sellerId.imageLink : blankUser}
                     alt="user img"
-                  />
-                  <span className="flex-grow flex flex-col pl-4">
+                  />  
+                  
+          
+                         <span className="flex-grow flex flex-col pl-4">
                     <span className="title-font font-medium text-gray-900">
                       {review.createdBy?.username}
                     </span>

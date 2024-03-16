@@ -2,6 +2,8 @@ import { useParams } from "react-router-dom";
 import { useGetAllRoomsQuery } from "../../../redux/api/Rooms/rooms.api";
 import { getMatchedData } from "./getMatchedData";
 import Review from "../../Reviews/Reviews";
+ 
+import blankUser from '../../../../public/blank user.png'
 
 const RoomDetails = () => {
     const {_id} = useParams();
@@ -9,7 +11,7 @@ const RoomDetails = () => {
     const { data } = useGetAllRoomsQuery(undefined);
 
     const room = getMatchedData(_id as string, data?.data);
-    // console.log(room,'*************************');
+    console.log(room,'*************************');
  
  return (
  <div>
@@ -42,11 +44,16 @@ const RoomDetails = () => {
             src="https://source.unsplash.com/350x150/?northern lights"
             alt="image is not available"
           />
-          <img
-            className="w-[100px] h-[100px] absolute -bottom-10 left-1/2 -translate-x-1/2 rounded-full bg-gray-400 border border-white"
-            src={room ? room.sellerId.imageLink : ''}
-            alt="image is not available"
-          />
+ 
+
+<img
+  className="w-[100px] h-[100px] absolute -bottom-10 left-1/2 -translate-x-1/2 rounded-full bg-gray-400 border border-white"
+  src={room && room.sellerId && room.sellerId.imageLink ? room.sellerId.imageLink : blankUser}
+  alt="User Image"
+/>
+
+ 
+
         </div>
         {/* Profile Name & Role */}
         <div className="pt-8 text-center space-y-1  ">
